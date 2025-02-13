@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -29,15 +30,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementX > 0)
         {
-        _sr.flipX = false;
+            _sr.flipX = false;
+            _animator.SetBool("Running", true);
         }
         else if (movementX < 0)
         {
             _sr.flipX = true;
+            _animator.SetBool("Running", true);
         }
         else
         {
-        
+            _animator.SetBool("Running", false);
         }
     }
 }
